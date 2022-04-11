@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/tech-no-ledge by peter-spacey Artlist.mp3-1d0fa71a6e16614118226fd2ee40e3aa.mp3str"
+
+[deps]
+
+source_file="res://assets/music/tech-no-ledge by peter-spacey Artlist.mp3"
+dest_files=[ "res://.import/tech-no-ledge by peter-spacey Artlist.mp3-1d0fa71a6e16614118226fd2ee40e3aa.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

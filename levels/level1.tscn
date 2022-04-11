@@ -1,0 +1,173 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://actors/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/UFO Main/ground.png" type="Texture" id=2]
+[ext_resource path="res://assets/UFO Main/background_sky .png" type="Texture" id=3]
+[ext_resource path="res://assets/UFO Main/moon.png" type="Texture" id=4]
+[ext_resource path="res://actors/people/abductee.tscn" type="PackedScene" id=5]
+[ext_resource path="res://buildings/TallBlueBuilding.tscn" type="PackedScene" id=6]
+[ext_resource path="res://buildings/RedShortBuilding.tscn" type="PackedScene" id=7]
+[ext_resource path="res://buildings/House.tscn" type="PackedScene" id=8]
+[ext_resource path="res://buildings/GreenMediumBuilding.tscn" type="PackedScene" id=9]
+[ext_resource path="res://buildings/GovernmentBuilding.tscn" type="PackedScene" id=10]
+[ext_resource path="res://UI/score.tscn" type="PackedScene" id=11]
+[ext_resource path="res://actors/enemies/tank/tank.tscn" type="PackedScene" id=12]
+[ext_resource path="res://UI/HealthBar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/main_theme/Conformed Files/assembly-line-dreams by ostin-drais Artlist 48000 1.wav" type="AudioStream" id=14]
+[ext_resource path="res://actors/enemies/missile/missile.tscn" type="PackedScene" id=15]
+[ext_resource path="res://levels/level1.gd" type="Script" id=16]
+[ext_resource path="res://actors/enemies/turret/Turret.tscn" type="PackedScene" id=17]
+[ext_resource path="res://tools/spawner.tscn" type="PackedScene" id=18]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 876.5, 10 )
+
+[node name="level1" type="Node2D"]
+script = ExtResource( 16 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3, -10 )
+z_index = 3
+collision_layer = 67
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Player"]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Player/ParallaxBackground"]
+motion_scale = Vector2( 0.01, 1 )
+motion_mirroring = Vector2( 640, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="Player/ParallaxBackground/ParallaxLayer"]
+margin_right = 640.0
+margin_bottom = 360.0
+rect_scale = Vector2( 1.03, 1.03 )
+texture = ExtResource( 3 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Player/ParallaxBackground"]
+z_as_relative = false
+motion_mirroring = Vector2( 1280, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="Player/ParallaxBackground/ParallaxLayer2"]
+margin_left = -29.0
+margin_top = -331.0
+margin_right = 1251.0
+margin_bottom = 389.0
+texture = ExtResource( 2 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Player/ParallaxBackground"]
+motion_scale = Vector2( 0.01, 1 )
+motion_mirroring = Vector2( 820, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="Player/ParallaxBackground/ParallaxLayer3"]
+margin_left = -362.0
+margin_top = 8.0
+margin_right = 278.0
+margin_bottom = 368.0
+texture = ExtResource( 4 )
+
+[node name="score" parent="Player" instance=ExtResource( 11 )]
+
+[node name="BlueBuilding" parent="." instance=ExtResource( 6 )]
+position = Vector2( 60, 175 )
+
+[node name="RedBuilding" parent="." instance=ExtResource( 7 )]
+position = Vector2( 257, 251 )
+
+[node name="House" parent="." instance=ExtResource( 8 )]
+position = Vector2( 147, 299 )
+
+[node name="abductee" parent="." instance=ExtResource( 5 )]
+position = Vector2( 183, 283 )
+
+[node name="abductee3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 498, 333 )
+
+[node name="abductee2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 277, 247 )
+
+[node name="abductee4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 788, 294 )
+
+[node name="abductee5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 771, 293 )
+
+[node name="abductee6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 921, 289 )
+
+[node name="abductee7" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1008, 288 )
+
+[node name="abductee8" parent="." instance=ExtResource( 5 )]
+position = Vector2( 843, 331 )
+
+[node name="abductee9" parent="." instance=ExtResource( 5 )]
+position = Vector2( 586, 152 )
+
+[node name="abductee10" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1178, 326 )
+
+[node name="abductee11" parent="." instance=ExtResource( 5 )]
+position = Vector2( 31, 328 )
+
+[node name="abductee12" parent="." instance=ExtResource( 5 )]
+position = Vector2( 161, 289 )
+
+[node name="abductee13" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1080, 331 )
+
+[node name="BlueBuilding2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 554, 220 )
+
+[node name="BlueBuilding" parent="BlueBuilding2" instance=ExtResource( 10 )]
+position = Vector2( 332, 74 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 385, 358 )
+collision_layer = 64
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 8156, -4 )
+scale = Vector2( 10, 1 )
+shape = SubResource( 1 )
+
+[node name="Tank" parent="." instance=ExtResource( 12 )]
+position = Vector2( 440, 322 )
+
+[node name="Tank2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 763, 324 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 13 )]
+
+[node name="mainTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -15.0
+autoplay = true
+
+[node name="Missile" parent="." instance=ExtResource( 15 )]
+position = Vector2( 590, 56 )
+rotation = -3.11192
+frame = 1
+
+[node name="SpawnMissile" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
+
+[node name="Turret" parent="." instance=ExtResource( 17 )]
+position = Vector2( 585, 194 )
+
+[node name="Turret2" parent="." instance=ExtResource( 17 )]
+position = Vector2( 95, 146 )
+frame = 1
+
+[node name="Turret3" parent="." instance=ExtResource( 17 )]
+position = Vector2( 972, 267 )
+frame = 1
+
+[node name="Turret4" parent="." instance=ExtResource( 17 )]
+position = Vector2( 1234, 308 )
+frame = 1
+
+[node name="spawner" parent="." instance=ExtResource( 18 )]
+
+[connection signal="timeout" from="SpawnMissile" to="." method="_on_SpawnMissile_timeout"]

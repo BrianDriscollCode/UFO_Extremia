@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/afterparty by balloonplanet Artlist.mp3-ee3f181561b95416759deee3cd090951.mp3str"
+
+[deps]
+
+source_file="res://assets/music/afterparty by balloonplanet Artlist.mp3"
+dest_files=[ "res://.import/afterparty by balloonplanet Artlist.mp3-ee3f181561b95416759deee3cd090951.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

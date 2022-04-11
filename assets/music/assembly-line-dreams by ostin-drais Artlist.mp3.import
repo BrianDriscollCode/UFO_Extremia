@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/assembly-line-dreams by ostin-drais Artlist.mp3-040727ff1dc22e20f430305cabde1921.mp3str"
+
+[deps]
+
+source_file="res://assets/music/assembly-line-dreams by ostin-drais Artlist.mp3"
+dest_files=[ "res://.import/assembly-line-dreams by ostin-drais Artlist.mp3-040727ff1dc22e20f430305cabde1921.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

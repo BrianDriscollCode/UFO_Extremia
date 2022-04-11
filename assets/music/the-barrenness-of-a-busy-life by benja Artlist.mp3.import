@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/the-barrenness-of-a-busy-life by benja Artlist.mp3-d645cdcbef250fb997b58ecc437ea8f4.mp3str"
+
+[deps]
+
+source_file="res://assets/music/the-barrenness-of-a-busy-life by benja Artlist.mp3"
+dest_files=[ "res://.import/the-barrenness-of-a-busy-life by benja Artlist.mp3-d645cdcbef250fb997b58ecc437ea8f4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

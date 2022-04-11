@@ -1,0 +1,122 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://assets/UFO Main/UFOMainAnims1.png" type="Texture" id=1]
+[ext_resource path="res://assets/UFO Main/UFOMainAnims3.png" type="Texture" id=2]
+[ext_resource path="res://assets/UFO Main/UFOMainAnims4.png" type="Texture" id=3]
+[ext_resource path="res://assets/UFO Main/UFOMainAnims6.png" type="Texture" id=4]
+[ext_resource path="res://assets/UFO Main/UFOMainAnims2.png" type="Texture" id=5]
+[ext_resource path="res://assets/UFO Main/UFOMainAnims5.png" type="Texture" id=6]
+[ext_resource path="res://assets/UFO Main/UFOMainAnims7.png" type="Texture" id=7]
+[ext_resource path="res://actors/player/Camera2D.gd" type="Script" id=8]
+[ext_resource path="res://actors/player/player.gd" type="Script" id=9]
+[ext_resource path="res://assets/UFO Main/gravity_beam.png" type="Texture" id=10]
+[ext_resource path="res://assets/sound effects/gravity_beam_mixdown2.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sound effects/retrieve/abductee_retrieved_mixdown2.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sound effects/ship/ship_hit_mixdown.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/UFO Main/light.png" type="Texture" id=14]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.5
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 2 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 21, 9 )
+
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
+z_index = -1
+collision_layer = 3
+collision_mask = 56
+script = ExtResource( 9 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 321, 179 )
+z_index = -1
+current = true
+limit_top = 10
+limit_bottom = 0
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.65
+drag_margin_top = 1.0
+drag_margin_right = 0.65
+drag_margin_bottom = 1.0
+script = ExtResource( 8 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 319, 193 )
+z_index = -1
+collision_layer = 5
+collision_mask = 8
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Area2D"]
+position = Vector2( 0, -14 )
+z_index = 1
+z_as_relative = false
+frames = SubResource( 1 )
+frame = 3
+playing = true
+
+[node name="GravityBeamParticle" type="CPUParticles2D" parent="Area2D/AnimatedSprite"]
+position = Vector2( 0, 15 )
+z_index = 2
+z_as_relative = false
+amount = 14
+lifetime = 3.5
+emission_shape = 1
+emission_sphere_radius = 1.31
+direction = Vector2( 0, 1 )
+spread = 18.16
+initial_velocity = 64.22
+linear_accel = -22.52
+radial_accel = -45.32
+damping = 41.67
+scale_amount = 2.0
+color = Color( 0.988235, 0.984314, 0.772549, 1 )
+
+[node name="GravityBeamImage" type="TextureRect" parent="Area2D/AnimatedSprite"]
+margin_left = -25.0
+margin_top = 12.0
+margin_right = 25.0
+margin_bottom = 372.0
+texture = ExtResource( 10 )
+
+[node name="GravityBeamCollision" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+disabled = true
+
+[node name="SoundGravityBeam" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -3.624
+
+[node name="SoundShipHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="SoundRetrieveHuman" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -8.117
+
+[node name="playerArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 32
+
+[node name="playerCollision" type="CollisionShape2D" parent="playerArea"]
+position = Vector2( 319, 186 )
+shape = SubResource( 3 )
+
+[node name="GravityBeamLight" type="Light2D" parent="."]
+position = Vector2( 318, 229 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 14 )
+texture_scale = 0.4
+energy = 0.55
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="playerArea" to="." method="_on_playerArea_area_entered"]
